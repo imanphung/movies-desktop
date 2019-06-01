@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="NetVideo.ListVideoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Margin="20"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:model="clr-namespace:NetVideo.Model"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="200" d:DesignWidth="400">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type model:VideoInfo}">
+            <StackPanel Width="440" Height="220" Name="main" Background="Black">
+                <StackPanel.LayoutTransform>
+                    <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+                </StackPanel.LayoutTransform>
+                <Border BorderThickness="1" CornerRadius="2" Margin="3">
+                    <StackPanel Tag="{Binding Id}" PreviewMouseLeftButtonUp="StackPanel_PreviewMouseLeftButtonUp">
+                        <Image Stretch="Fill" Source="{Binding Image}"></Image>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="main"
+                                                 Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                 To="0.8" Duration="0:0:0.3"/>
+                                <DoubleAnimation Storyboard.TargetName="main"
+                                                 Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                 To="0.8" Duration="0:0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="main"
+                                                 Storyboard.TargetProperty="LayoutTransform.ScaleX"
+                                                 Duration="0:0:0.3"/>
+                                <DoubleAnimation Storyboard.TargetName="main"
+                                                 Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                 Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel>
+        <Grid VerticalAlignment="Center">
+            <Label Foreground="WhiteSmoke" FontSize="15" >Trending now</Label>
+            <ItemsControl ItemsSource="{Binding}"
+                          Name="item" VerticalAlignment="Center"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" Height="180"></VirtualizingStackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <Grid>
+                            <ScrollViewer Name="scrollViewer">
+                                <ScrollViewer.Template>
+                                    <ControlTemplate TargetType="ScrollViewer">
+                                        <Grid>
+                                            <ScrollContentPresenter></ScrollContentPresenter>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ScrollViewer.Template>
+                                <ItemsPresenter VerticalAlignment="Center"></ItemsPresenter>
+                            </ScrollViewer>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Visibility="{Binding ElementName=scrollViewer, Path=ComputedHorizontalScrollBarVisibility}"
+                                    Background="#7f000000"
+                                    Command="{x:Static ScrollBar.PageLeftCommand}"
+                                    CommandTarget="{Binding ElementName=scrollViewer}">
+                                    <materialDesign:PackIcon Kind="KeyboardArrowLeft"/>
+                                </Button>
+                                <Button Visibility="{Binding ElementName=scrollViewer, Path=ComputedHorizontalScrollBarVisibility}"
+                                    Background="#7f000000"  Grid.Column="2"
+                                    Command="{x:Static ScrollBar.PageRightCommand}"
+                                    CommandTarget="{Binding ElementName=scrollViewer}">
+                                    <materialDesign:PackIcon Kind="KeyboardArrowRight" />
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
+        </Grid>
+        <Grid Height="100" Background="Black" Name="gridDetail" Visibility="Collapsed">
+            <TextBlock Text="{Binding}"></TextBlock>
+        </Grid>
+    </StackPanel>
+</UserControl>

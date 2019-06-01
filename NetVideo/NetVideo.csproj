@@ -81,11 +81,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListVideoUC.xaml.cs">
+      <DependentUpon>ListVideoUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\CustomerInfo.cs" />
+    <Compile Include="Model\VideoInfo.cs" />
+    <Compile Include="MyConverter\ImageConverter.cs" />
     <Compile Include="MyValidationRule\EmailValidationRule.cs" />
     <Compile Include="MyValidationRule\PasswordValidationRule.cs" />
     <Compile Include="PasswordBoxAssistant.cs" />
@@ -95,6 +100,10 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControllBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="ListVideoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

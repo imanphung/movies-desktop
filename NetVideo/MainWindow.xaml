@@ -17,123 +17,48 @@
    Width="1024" Height="768"
     WindowStyle="None" ResizeMode="NoResize"  
     WindowState="Maximized" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <DockPanel LastChildFill="True">
+        <Grid Height="56" DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                <Image Width="100"></Image>
+                <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
+                <Button Uid="1" Width="100" Content="Videos" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
+                <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Foreground="WhiteSmoke"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425">
+                    <materialDesign:PackIcon Kind="BellRingOutline" Width="25" Height="25"  />
+                </Button>
+                <ComboBox Margin="15,0,15,0" FontSize="15" Width="100" Foreground="WhiteSmoke" SelectedIndex="0" VerticalAlignment="Center">
+                    <ComboBoxItem Content="Name"/>
+                    <ComboBoxItem Content="Info"/>
+                    <ComboBoxItem Content="My List"/>
+                    <ComboBoxItem Content="History"/>
+                </ComboBox>
+                <Button Uid="4"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Power" Foreground="OrangeRed" Width="25" Height="25" />
+                </Button>
+            </StackPanel>
+            <Grid x:Name="GridCursor" Width="100" Height="5" Background="DarkGray" HorizontalAlignment="Left" Margin="110 50 0 0"/>
+        </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Background="#FF0F0F14">
-                <Grid Height="56">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                        <Image Width="100"></Image>
-                        <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
-                        <Button Uid="1" Width="100" Content="Videos" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
-                        <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Foreground="WhiteSmoke"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425">
-                            <materialDesign:PackIcon Kind="BellRingOutline" Width="25" Height="25"  />
-                        </Button>
-                        <ComboBox Margin="15,0,15,0" FontSize="15" Width="100" Foreground="WhiteSmoke" SelectedIndex="0" VerticalAlignment="Center">
-                            <ComboBoxItem Content="Name"/>
-                            <ComboBoxItem Content="Info"/>
-                            <ComboBoxItem Content="My List"/>
-                            <ComboBoxItem Content="History"/>
-                            
-                        </ComboBox>
-                        <Button Uid="4"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425" Click="Button_Click">
-                            <materialDesign:PackIcon Kind="Power" Foreground="OrangeRed" Width="25" Height="25" />
-                        </Button>
-                    </StackPanel>
-                    <Grid x:Name="GridCursor" Width="100" Height="5" Background="DarkGray" HorizontalAlignment="Left" Margin="110 50 0 0"/>
-                </Grid>
                 <Grid x:Name="GridMain" Height="223" Background="Black">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="500*"/>
                         <ColumnDefinition Width="103*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.ColumnSpan="2" Margin="0,0,-44,0">
-                        <Image Source="Images\lHFYy7f.png" Margin="-300,0,-339,72" Height="470"/>
+                        <Image Source="Images\lHFYy7f.png" Stretch="Fill" Height="470"/>
                     </StackPanel>
                 </Grid>
-                <Grid Margin="0,30,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Margin="30,0,0,0">
-                        <Label Foreground="WhiteSmoke" FontSize="15" >My List</Label>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Image Margin="0,0,3,0" Source="Images\1.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="1" Source="Images\2.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="2" Source="Images\3.jpg"></Image>
+                
+                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
+                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
+                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
+                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
 
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-                <Grid Margin="0,30,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Margin="30,0,0,0">
-                        <Label Foreground="WhiteSmoke" FontSize="15" >Originals</Label>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Image Margin="0,0,3,0" Source="Images\10.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="1" Source="Images\4.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="2" Source="Images\5.png"></Image>
-                            <Image Margin="0,0,3,0" Grid.Column="3" Source="Images\6.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="4" Source="Images\9.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="5" Source="Images\8.jpg"></Image>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-                <Grid Margin="0,30,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Margin="30,0,0,0">
-                        <Label Foreground="WhiteSmoke" FontSize="15" >Trending now</Label>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Image Margin="0,0,3,0" Source="Images\11.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="1" Source="Images\12.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="2" Source="Images\13.jpg"></Image>
-                            <Image Margin="0,0,3,0" Grid.Column="3" Source="Images\14.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="4" Source="Images\15.jpg"></Image>
-                            <Image  Margin="0,0,3,0" Grid.Column="5" Source="Images\17.jpg"></Image>
-
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-                <Grid Margin="0,50,0,0" Height="100" >
-
-                </Grid>
             </StackPanel>
         </ScrollViewer>
-    </Grid>
+    </DockPanel>
 </Window>
