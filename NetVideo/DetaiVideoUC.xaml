@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="NetVideo.DetaiVideoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:model="clr-namespace:NetVideo.Model"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="300" d:DesignWidth="900">
+    <Grid>
+        <Image Source="bg_1200x400.jpg"></Image>
+        <StackPanel Margin="10" VerticalAlignment="Center">
+            <TextBlock FontSize="24">FILM NAME</TextBlock>
+            <TextBlock HorizontalAlignment="Left"
+                       Width="500"
+                       Margin="5"
+                       TextWrapping="Wrap" 
+                       TextTrimming="WordEllipsis" 
+                       FontSize="12" 
+                       LineStackingStrategy="BlockLineHeight"
+                       LineHeight="16"
+                       MaxHeight="48">Titanic is a 1997 American epic romantic disaster movie. It was directed, written, and co-produced by James Cameron. The movie is about the 1912 sinking of the RMS Titanic. It stars Kate Winslet and Leonardo DiCaprio. The two play characters who are of different social classes.</TextBlock>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Button Background="Red" Width="110">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Play" />
+                        <TextBlock Margin="3, 0">PLAY</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Margin="10, 0" Background="{x:Null}" Width="110">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Play" />
+                        <TextBlock Margin="3, 0">MY LIST</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Derector: Derector">
+                    <!--<TextBlock.Text>
+                        <MultiBinding StringFormat="Derector: {0}">
+                            <Binding Source="" Path=""></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>-->
+            </TextBlock>
+            <TextBlock Text="Origin: Origin">
+                    <!--<TextBlock.Text>
+                        <MultiBinding StringFormat="Derector: {0}">
+                            <Binding Source="" Path=""></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>-->
+            </TextBlock>
+            <TextBlock Text="Genres: Genre, Genre, Genre, Genre">
+                    <!--<TextBlock.Text>
+                        <MultiBinding StringFormat="Derector: {0}">
+                            <Binding Source="" Path=""></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>-->
+            </TextBlock>
+            <TextBlock Text="Actors: Actor, Actor, Actor, Actor">
+                    <!--<TextBlock.Text>
+                        <MultiBinding StringFormat="Derector: {0}">
+                            <Binding Source="" Path=""></Binding>
+                        </MultiBinding>
+                    </TextBlock.Text>-->
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

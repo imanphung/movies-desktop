@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetVideo"
              mc:Ignorable="d" 
              Margin="20"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -17,12 +18,12 @@
              d:DesignHeight="200" d:DesignWidth="400">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type model:VideoInfo}">
-            <StackPanel Width="440" Height="220" Name="main" Background="Black">
+            <StackPanel PreviewMouseLeftButtonUp="StackPanel_PreviewMouseLeftButtonUp" Margin="3, 0, 0, 5" Width="440" Height="225" Name="main" Background="Black">
                 <StackPanel.LayoutTransform>
                     <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
                 </StackPanel.LayoutTransform>
-                <Border BorderThickness="1" CornerRadius="2" Margin="3">
-                    <StackPanel Tag="{Binding Id}" PreviewMouseLeftButtonUp="StackPanel_PreviewMouseLeftButtonUp">
+                <Border Name="border" BorderBrush="Red" CornerRadius="2">
+                    <StackPanel Name="stack" Tag="{Binding Id}" >
                         <Image Stretch="Fill" Source="{Binding Image}"></Image>
                     </StackPanel>
                 </Border>
@@ -61,12 +62,12 @@
         <Grid VerticalAlignment="Center">
             <Label Foreground="WhiteSmoke" FontSize="15" >Trending now</Label>
             <ItemsControl ItemsSource="{Binding}"
-                          Name="item" VerticalAlignment="Center"
+                          Name="items" VerticalAlignment="Center"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
                           ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Horizontal" Height="180"></VirtualizingStackPanel>
+                        <VirtualizingStackPanel Orientation="Horizontal" Height="185"></VirtualizingStackPanel>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.Template>
@@ -89,16 +90,16 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Button Visibility="{Binding ElementName=scrollViewer, Path=ComputedHorizontalScrollBarVisibility}"
-                                    Background="#7f000000"
-                                    Command="{x:Static ScrollBar.PageLeftCommand}"
+                                    Background="#7f000000" Height="70"
+                                    Command="{x:Static ScrollBar.LineLeftCommand}"
                                     CommandTarget="{Binding ElementName=scrollViewer}">
                                     <materialDesign:PackIcon Kind="KeyboardArrowLeft"/>
                                 </Button>
                                 <Button Visibility="{Binding ElementName=scrollViewer, Path=ComputedHorizontalScrollBarVisibility}"
-                                    Background="#7f000000"  Grid.Column="2"
-                                    Command="{x:Static ScrollBar.PageRightCommand}"
+                                    Background="#7f000000"  Grid.Column="2" Height="60"
+                                    Command="{x:Static ScrollBar.LineRightCommand}"
                                     CommandTarget="{Binding ElementName=scrollViewer}">
-                                    <materialDesign:PackIcon Kind="KeyboardArrowRight" />
+                                    <materialDesign:PackIcon Kind="KeyboardArrowRight"/>
                                 </Button>
                             </Grid>
                         </Grid>
@@ -106,8 +107,6 @@
                 </ItemsControl.Template>
             </ItemsControl>
         </Grid>
-        <Grid Height="100" Background="Black" Name="gridDetail" Visibility="Collapsed">
-            <TextBlock Text="{Binding}"></TextBlock>
-        </Grid>
+        <local:DetaiVideoUC x:Name="detail" Visibility="Collapsed"></local:DetaiVideoUC>
     </StackPanel>
 </UserControl>

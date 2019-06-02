@@ -34,7 +34,7 @@ namespace NetVideo
                 },
                 new VideoInfo {Image = "Images\\4.jpg", Id = "4"
                 },
-                new VideoInfo {Image = "Images\\5.jpg", Id = "5"
+                new VideoInfo {Image = "bg_1024x512.jpg", Id = "5"
                 },
                 new VideoInfo {Image = "Images\\6.jpg", Id = "6"
                 },
@@ -88,18 +88,19 @@ namespace NetVideo
         string oldTag = null;
         private void StackPanel_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            StackPanel stack = sender as StackPanel;
+            StackPanel s = sender as StackPanel;
+            StackPanel stack = (StackPanel)s.FindName("stack");
             if (oldTag != null)
             {
                 if (oldTag == stack.Tag.ToString())
                 {
-                    gridDetail.Visibility = System.Windows.Visibility.Collapsed;
+                    detail.Visibility = System.Windows.Visibility.Collapsed;
                     oldTag = null;
                     return;
                 }
             }
-            gridDetail.DataContext = stack.Tag.ToString();
-            gridDetail.Visibility = System.Windows.Visibility.Visible;
+            //detail.DataContext = stack.Tag.ToString();
+            detail.Visibility = System.Windows.Visibility.Visible;
             oldTag = stack.Tag.ToString();
         }
     }

@@ -81,6 +81,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DetaiVideoUC.xaml.cs">
+      <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListVideoUC.xaml.cs">
       <DependentUpon>ListVideoUC.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControllBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="DetaiVideoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ListVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +193,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\background_login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bg_1024x512.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bg_1200x400.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
