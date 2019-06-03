@@ -79,7 +79,8 @@ We hate paperwork, too." />
                 </Grid>
             </xctk:WizardPage>
             <xctk:WizardPage x:Name="Page2" PageType="Interior"
-                                   Title="Set up your credit or debit card.">
+                                   Title="Set up your credit or debit card."
+                             CanSelectNextPage="False">
 
                 <Grid Width="400" Height="250">
                     <Grid.RowDefinitions>
@@ -110,57 +111,57 @@ We hate paperwork, too." />
                     <TextBlock Grid.Row="3">Expiration Date(MM/YY):</TextBlock>
                     <TextBlock Grid.Row="4">Security Code(CVV):</TextBlock>
 
-                    <TextBox
+                    <TextBox    Name="txtFirstName" TextChanged="txtFirstName_TextChanged"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                              Grid.Column="1">
                         <TextBox.Text>
                             <Binding Path="FirstName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmailValidationRule></rule:EmailValidationRule>
+                                    <rule:EmptyValidationRule Name="First Name"></rule:EmptyValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
-                    <TextBox TextChanged="txtEmail_TextChanged" 
+                    <TextBox Name="txtLastName" TextChanged="txtLastName_TextChanged"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                              Grid.Column="1" Grid.Row="1">
                         <TextBox.Text>
-                            <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="LastName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmailValidationRule></rule:EmailValidationRule>
+                                    <rule:EmptyValidationRule Name="Last Name"></rule:EmptyValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
-                    <TextBox TextChanged="txtEmail_TextChanged" 
+                    <TextBox Name="txtCardNumber" TextChanged="txtCardNumber_TextChanged"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                              Grid.Column="1" Grid.Row="2">
                         <TextBox.Text>
-                            <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="CardNumber" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmailValidationRule></rule:EmailValidationRule>
+                                    <rule:EmptyValidationRule Name="Card Number"></rule:EmptyValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
-                    <TextBox TextChanged="txtEmail_TextChanged" 
+                    <TextBox Name="txtExpirationDate" TextChanged="txtExpirationDate_TextChanged"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                              Grid.Column="1" Grid.Row="3">
                         <TextBox.Text>
-                            <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="ExpirationDate" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmailValidationRule></rule:EmailValidationRule>
+                                    <rule:EmptyValidationRule Name="Expiration Month"></rule:EmptyValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
-                    <TextBox TextChanged="txtEmail_TextChanged" 
+                    <TextBox Name="txtSecurityCode" TextChanged="txtSecurityCode_TextChanged"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}" 
                              Grid.Column="1" Grid.Row="4">
                         <TextBox.Text>
-                            <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="SecurityCode" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmailValidationRule></rule:EmailValidationRule>
+                                    <rule:EmptyValidationRule Name="Security Code (CVV)"></rule:EmptyValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -180,7 +181,6 @@ We hate paperwork, too." />
                             <Setter Property="GroupName" Value="radioPlan"></Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <RadioButton Name="radMobile">Mobile</RadioButton>
                     <RadioButton Name="radBasic">Basic</RadioButton>
                     <RadioButton Name="radStandard">Standard</RadioButton>
                     <RadioButton Name="radPremium" IsChecked="True">Premium</RadioButton>

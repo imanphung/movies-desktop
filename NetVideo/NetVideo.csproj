@@ -116,6 +116,7 @@
     <Compile Include="MyConverter\GenresConverter.cs" />
     <Compile Include="MyConverter\ImageConverter.cs" />
     <Compile Include="MyValidationRule\EmailValidationRule.cs" />
+    <Compile Include="MyValidationRule\EmptyValidationRule.cs" />
     <Compile Include="MyValidationRule\PasswordValidationRule.cs" />
     <Compile Include="NetVideoModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -154,6 +155,7 @@
     <Compile Include="ViewModel\ListVideoViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SignUpViewModel.cs" />
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>

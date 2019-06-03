@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using NetVideo.ViewModel;
 
 namespace NetVideo
 {
@@ -22,32 +23,19 @@ namespace NetVideo
         public SignUpWindow()
         {
             InitializeComponent();
-            Account acc = new Account();
-            Page1.DataContext = acc;
-            CustomerInfo ci = new CustomerInfo();
-            Page2.DataContext = ci;
+            SignUpViewModel su = new SignUpViewModel();
+            this.DataContext = su;
         }
 
-        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+       
+        void SetSelectedNextPage1()
         {
-            if (txtPassword.Password.Count() > 1 && txtEmail.Text.Count() > 1)
+            if (String.IsNullOrEmpty(txtPassword.Password))
             {
-                if (!Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtPassword))
-                {
-                    Page1.CanSelectNextPage = true;
-                }
-                else
-                {
-                    Page1.CanSelectNextPage = false;
-                }
+
             }
-        }
-
-        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
-        {
             if (txtPassword.Password.Count() > 1 && txtEmail.Text.Count() > 1)
             {
-                
                 if ((!Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtPassword)) || (!Validation.GetHasError(txtEmail) && txtPassword.Password.Count() == 4))
                 {
                     Page1.CanSelectNextPage = true;
@@ -59,13 +47,30 @@ namespace NetVideo
             }
         }
 
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetSelectedNextPage1();
+        }
+
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            SetSelectedNextPage1();
+        }
+
+        void SetSelectedNextPage2()
+        {
+            string fisrtName = txtFirstName.Text;
+            string lastName = txtLastName.Text;
+            string cardNumber = txtCardNumber.Text;
+            string expirationDate = txtExpirationDate.Text;
+            string securityCode = txtSecurityCode.Text;
+
+
+        }
+
         private void Wizard_Finish(object sender, Xceed.Wpf.Toolkit.Core.CancelRoutedEventArgs e)
         {
-            if (radMobile.IsChecked == true)
-            {
-                MessageBox.Show("Mobile");
-            }
-            else if (radBasic.IsChecked == true)
+            if (radBasic.IsChecked == true)
             {
                 MessageBox.Show("Basic");
             }
@@ -77,6 +82,31 @@ namespace NetVideo
             {
                 MessageBox.Show("Premium");
             }
+        }
+
+        private void txtFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtCardNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtExpirationDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtSecurityCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
