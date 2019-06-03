@@ -21,7 +21,7 @@
         <local:ControlBarUC DockPanel.Dock="Top"></local:ControlBarUC>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Background="#FF0F0F14">
-                <local:DetaiVideoUC></local:DetaiVideoUC>
+                <local:DetaiVideoUC x:Name="videoHot"></local:DetaiVideoUC>
                 
                 <local:ListVideoUC x:Name="listMyList" Background="{x:Null}"></local:ListVideoUC>
                 <local:ListVideoUC x:Name="listTrending" Background="{x:Null}"></local:ListVideoUC>

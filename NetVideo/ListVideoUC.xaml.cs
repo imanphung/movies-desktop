@@ -41,21 +41,14 @@ namespace NetVideo
                     return;
                 }
             }
+
             int id = int.Parse(stack.Tag.ToString());
-            VideoInfo videoInfo = db.VideoInfoes.Where(x => x.Id == id).FirstOrDefault();
-            detail.DataContext = videoInfo;
-            genres g = new genres();
-            g.ListGenre = videoInfo.VideoGenres.ToList();
-            StackPanel tb = (StackPanel)detail.FindName("tbGenres");
-            tb.DataContext = g;
+            DetailVideoViewModel d = new DetailVideoViewModel();
+            d.BindingDetail(id, detail);
             detail.Visibility = System.Windows.Visibility.Visible;
             oldTag = stack.Tag.ToString();
         }
     }
 
-    public class genres : BaseViewModel
-    {
-        private List<VideoGenre> _ListGenre;
-        public List<VideoGenre> ListGenre { get { return _ListGenre; } set { _ListGenre = value; OnPropertyChanged("ListGenre"); } }
-    }
+    
 }

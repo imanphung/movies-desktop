@@ -17,9 +17,7 @@ namespace NetVideo.ViewModel
 
         public ListVideoViewModel()
         {
-            NetVideoEntities db = new NetVideoEntities();
-            List<VideoInfo> l = db.VideoInfoes.ToList();
-            List = new ObservableCollection<VideoInfo>(l);
+            
         }
     }
 }

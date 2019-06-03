@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +25,23 @@ namespace NetVideo
         public MainWindow()
         {
             InitializeComponent();
+            NetVideoEntities db = new NetVideoEntities();
+            List<VideoInfo> l = db.VideoInfoes.ToList();
+
             ListVideoViewModel lvMyList = new ListVideoViewModel();
             lvMyList.TitleList = "My list";
+            lvMyList.List = new ObservableCollection<VideoInfo>(l);
             listMyList.DataContext = lvMyList;
 
             ListVideoViewModel lvTrending = new ListVideoViewModel();
             lvTrending.TitleList = "Trending now";
-            lvTrending.List = new System.Collections.ObjectModel.ObservableCollection<VideoInfo>(lvTrending.List.Where(p => p.HotLevel == 2).ToList());
+            lvTrending.List = new ObservableCollection<VideoInfo>(l.Where(p => p.HotLevel == 2).ToList());
             listTrending.DataContext = lvTrending;
+
+            var minValue = db.VideoInfoes.Min(x => x.HotLevel);
+            VideoInfo v = db.VideoInfoes.Where(x => x.HotLevel == minValue).FirstOrDefault();
+            DetailVideoViewModel d = new DetailVideoViewModel();
+            d.BindingDetail(v.Id, videoHot);
         }
 
         public MainWindow(int id)
