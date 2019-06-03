@@ -10,6 +10,8 @@
      TextElement.FontSize="13"
         WindowStyle="None"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Name="loginWindow"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
@@ -57,7 +59,7 @@
                             <Setter Property="Margin" Value="10"></Setter>
                             <Setter Property="Background" Value="AntiqueWhite"></Setter>
                             <Setter Property="CornerRadius" Value="10"></Setter>
-                            <Setter Property="Padding" Value="15, 0, 15 ,10"></Setter>
+                            <Setter Property="Padding" Value="15, 0, 15, 8"></Setter>
                         </Style>
                     </Grid.Resources>
                     <TextBlock FontSize="24" 
@@ -72,7 +74,7 @@
                              materialDesign:HintAssist.Hint="Email"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                             <TextBox.Text>
-                                <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <rule:EmailValidationRule></rule:EmailValidationRule>
                                     </Binding.ValidationRules>
@@ -103,7 +105,9 @@
 
                     <Button Grid.Row="3" Height="45"
                         Margin="15, 20"
-                        Background="Red">
+                        Background="Red"
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}">
                         Sign in
                     </Button>
 

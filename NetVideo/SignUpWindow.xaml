@@ -58,7 +58,7 @@ We hate paperwork, too." />
                     <TextBlock Grid.Row="1">Password:</TextBlock>
                     <TextBox Name="txtEmail" TextChanged="txtEmail_TextChanged" Validation.ErrorTemplate="{StaticResource errorTemplate}" Grid.Column="1">
                         <TextBox.Text>
-                            <Binding Path="Username" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <rule:EmailValidationRule></rule:EmailValidationRule>
                                 </Binding.ValidationRules>

@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NetVideoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="60" />
+          <Property Name="LevelId" Type="int" />
+          <Property Name="ActivationDate" Type="date" />
+          <Property Name="ExpirationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="AccountLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Period" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="20" />
+          <Property Name="CardExpirationDate" Type="date" />
+          <Property Name="SecurityCode" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="MyList">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+            <PropertyRef Name="IdVideo" />
+          </Key>
+          <Property Name="IdAccount" Type="int" Nullable="false" />
+          <Property Name="IdVideo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAccount" Type="int" />
+          <Property Name="IdAccountLevel" Type="int" />
+          <Property Name="ActivationDate" Type="date" />
+          <Property Name="ExpirationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="VI_VG">
+          <Key>
+            <PropertyRef Name="IdVideo" />
+            <PropertyRef Name="IdGenre" />
+          </Key>
+          <Property Name="IdVideo" Type="int" Nullable="false" />
+          <Property Name="IdGenre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoGenre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VideoInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+          <Property Name="Director" Type="varchar" MaxLength="100" />
+          <Property Name="Path" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+          <Property Name="ImageDetail" Type="varchar" MaxLength="50" />
+          <Property Name="VideoDescription" Type="varchar" MaxLength="500" />
+          <Property Name="Actor" Type="varchar" MaxLength="500" />
+          <Property Name="HotLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="WatchHistory">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+            <PropertyRef Name="IdVideo" />
+          </Key>
+          <Property Name="IdAccount" Type="int" Nullable="false" />
+          <Property Name="IdVideo" Type="int" Nullable="false" />
+          <Property Name="Position" Type="int" />
+        </EntityType>
+        <Association Name="FK__Account__LevelId__25869641">
+          <End Role="AccountLevel" Type="Self.AccountLevel" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerI__Accou__3D5E1FD2">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MyList__IdAccoun__693CA210">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="MyList" Type="Self.MyList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MyList">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MyList__IdVideo__6A30C649">
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="1" />
+          <End Role="MyList" Type="Self.MyList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MyList">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentHi__IdAcc__276EDEB3">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentHi__IdAcc__286302EC">
+          <End Role="AccountLevel" Type="Self.AccountLevel" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="IdAccountLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VI_VG__IdGenre__6E01572D">
+          <End Role="VideoGenre" Type="Self.VideoGenre" Multiplicity="1" />
+          <End Role="VI_VG" Type="Self.VI_VG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoGenre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VI_VG">
+              <PropertyRef Name="IdGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VI_VG__IdVideo__6D0D32F4">
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="1" />
+          <End Role="VI_VG" Type="Self.VI_VG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VI_VG">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WatchHist__IdAcc__6B24EA82">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="WatchHistory" Type="Self.WatchHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchHistory">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WatchHist__IdVid__6C190EBB">
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="1" />
+          <End Role="WatchHistory" Type="Self.WatchHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchHistory">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetVideoModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountLevel" EntityType="Self.AccountLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MyList" EntityType="Self.MyList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VI_VG" EntityType="Self.VI_VG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoGenre" EntityType="Self.VideoGenre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoInfo" EntityType="Self.VideoInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatchHistory" EntityType="Self.WatchHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__LevelId__25869641" Association="Self.FK__Account__LevelId__25869641">
+            <End Role="AccountLevel" EntitySet="AccountLevel" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerI__Accou__3D5E1FD2" Association="Self.FK__CustomerI__Accou__3D5E1FD2">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MyList__IdAccoun__693CA210" Association="Self.FK__MyList__IdAccoun__693CA210">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="MyList" EntitySet="MyList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MyList__IdVideo__6A30C649" Association="Self.FK__MyList__IdVideo__6A30C649">
+            <End Role="VideoInfo" EntitySet="VideoInfo" />
+            <End Role="MyList" EntitySet="MyList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentHi__IdAcc__276EDEB3" Association="Self.FK__PaymentHi__IdAcc__276EDEB3">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentHi__IdAcc__286302EC" Association="Self.FK__PaymentHi__IdAcc__286302EC">
+            <End Role="AccountLevel" EntitySet="AccountLevel" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VI_VG__IdGenre__6E01572D" Association="Self.FK__VI_VG__IdGenre__6E01572D">
+            <End Role="VideoGenre" EntitySet="VideoGenre" />
+            <End Role="VI_VG" EntitySet="VI_VG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VI_VG__IdVideo__6D0D32F4" Association="Self.FK__VI_VG__IdVideo__6D0D32F4">
+            <End Role="VideoInfo" EntitySet="VideoInfo" />
+            <End Role="VI_VG" EntitySet="VI_VG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WatchHist__IdAcc__6B24EA82" Association="Self.FK__WatchHist__IdAcc__6B24EA82">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="WatchHistory" EntitySet="WatchHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WatchHist__IdVid__6C190EBB" Association="Self.FK__WatchHist__IdVid__6C190EBB">
+            <End Role="VideoInfo" EntitySet="VideoInfo" />
+            <End Role="WatchHistory" EntitySet="WatchHistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetVideoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LevelId" Type="Int32" />
+          <Property Name="ActivationDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AccountLevel" Relationship="Self.FK__Account__LevelId__25869641" FromRole="Account" ToRole="AccountLevel" />
+          <NavigationProperty Name="CustomerInfoes" Relationship="Self.FK__CustomerI__Accou__3D5E1FD2" FromRole="Account" ToRole="CustomerInfo" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK__PaymentHi__IdAcc__276EDEB3" FromRole="Account" ToRole="PaymentHistory" />
+          <NavigationProperty Name="WatchHistories" Relationship="Self.FK__WatchHist__IdAcc__6B24EA82" FromRole="Account" ToRole="WatchHistory" />
+          <NavigationProperty Name="VideoInfoes" Relationship="Self.MyList" FromRole="Account" ToRole="VideoInfo" />
+        </EntityType>
+        <EntityType Name="AccountLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Period" Type="Int32" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__LevelId__25869641" FromRole="AccountLevel" ToRole="Account" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK__PaymentHi__IdAcc__286302EC" FromRole="AccountLevel" ToRole="PaymentHistory" />
+        </EntityType>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CardExpirationDate" Type="DateTime" Precision="0" />
+          <Property Name="SecurityCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__CustomerI__Accou__3D5E1FD2" FromRole="CustomerInfo" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="PaymentHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAccount" Type="Int32" />
+          <Property Name="IdAccountLevel" Type="Int32" />
+          <Property Name="ActivationDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__PaymentHi__IdAcc__276EDEB3" FromRole="PaymentHistory" ToRole="Account" />
+          <NavigationProperty Name="AccountLevel" Relationship="Self.FK__PaymentHi__IdAcc__286302EC" FromRole="PaymentHistory" ToRole="AccountLevel" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VideoGenre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VideoInfoes" Relationship="Self.VI_VG" FromRole="VideoGenre" ToRole="VideoInfo" />
+        </EntityType>
+        <EntityType Name="VideoInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Director" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Actor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HotLevel" Type="Int32" />
+          <NavigationProperty Name="WatchHistories" Relationship="Self.FK__WatchHist__IdVid__6C190EBB" FromRole="VideoInfo" ToRole="WatchHistory" />
+          <NavigationProperty Name="Accounts" Relationship="Self.MyList" FromRole="VideoInfo" ToRole="Account" />
+          <NavigationProperty Name="VideoGenres" Relationship="Self.VI_VG" FromRole="VideoInfo" ToRole="VideoGenre" />
+        </EntityType>
+        <EntityType Name="WatchHistory">
+          <Key>
+            <PropertyRef Name="IdAccount" />
+            <PropertyRef Name="IdVideo" />
+          </Key>
+          <Property Name="IdAccount" Type="Int32" Nullable="false" />
+          <Property Name="IdVideo" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__WatchHist__IdAcc__6B24EA82" FromRole="WatchHistory" ToRole="Account" />
+          <NavigationProperty Name="VideoInfo" Relationship="Self.FK__WatchHist__IdVid__6C190EBB" FromRole="WatchHistory" ToRole="VideoInfo" />
+        </EntityType>
+        <Association Name="FK__Account__LevelId__25869641">
+          <End Role="AccountLevel" Type="Self.AccountLevel" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerI__Accou__3D5E1FD2">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerInfo">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentHi__IdAcc__276EDEB3">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WatchHist__IdAcc__6B24EA82">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="WatchHistory" Type="Self.WatchHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchHistory">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentHi__IdAcc__286302EC">
+          <End Role="AccountLevel" Type="Self.AccountLevel" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="IdAccountLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WatchHist__IdVid__6C190EBB">
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="1" />
+          <End Role="WatchHistory" Type="Self.WatchHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WatchHistory">
+              <PropertyRef Name="IdVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MyList">
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="VI_VG">
+          <End Role="VideoGenre" Type="Self.VideoGenre" Multiplicity="*" />
+          <End Role="VideoInfo" Type="Self.VideoInfo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="NetVideoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AccountLevels" EntityType="Self.AccountLevel" />
+          <EntitySet Name="CustomerInfoes" EntityType="Self.CustomerInfo" />
+          <EntitySet Name="PaymentHistories" EntityType="Self.PaymentHistory" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="VideoGenres" EntityType="Self.VideoGenre" />
+          <EntitySet Name="VideoInfoes" EntityType="Self.VideoInfo" />
+          <EntitySet Name="WatchHistories" EntityType="Self.WatchHistory" />
+          <AssociationSet Name="FK__Account__LevelId__25869641" Association="Self.FK__Account__LevelId__25869641">
+            <End Role="AccountLevel" EntitySet="AccountLevels" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerI__Accou__3D5E1FD2" Association="Self.FK__CustomerI__Accou__3D5E1FD2">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentHi__IdAcc__276EDEB3" Association="Self.FK__PaymentHi__IdAcc__276EDEB3">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WatchHist__IdAcc__6B24EA82" Association="Self.FK__WatchHist__IdAcc__6B24EA82">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="WatchHistory" EntitySet="WatchHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentHi__IdAcc__286302EC" Association="Self.FK__PaymentHi__IdAcc__286302EC">
+            <End Role="AccountLevel" EntitySet="AccountLevels" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WatchHist__IdVid__6C190EBB" Association="Self.FK__WatchHist__IdVid__6C190EBB">
+            <End Role="VideoInfo" EntitySet="VideoInfoes" />
+            <End Role="WatchHistory" EntitySet="WatchHistories" />
+          </AssociationSet>
+          <AssociationSet Name="MyList" Association="Self.MyList">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="VideoInfo" EntitySet="VideoInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="VI_VG" Association="Self.VI_VG">
+            <End Role="VideoGenre" EntitySet="VideoGenres" />
+            <End Role="VideoInfo" EntitySet="VideoInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NetVideoModelStoreContainer" CdmEntityContainer="NetVideoEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="NetVideoModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountLevels">
+            <EntityTypeMapping TypeName="NetVideoModel.AccountLevel">
+              <MappingFragment StoreEntitySet="AccountLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInfoes">
+            <EntityTypeMapping TypeName="NetVideoModel.CustomerInfo">
+              <MappingFragment StoreEntitySet="CustomerInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardExpirationDate" ColumnName="CardExpirationDate" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentHistories">
+            <EntityTypeMapping TypeName="NetVideoModel.PaymentHistory">
+              <MappingFragment StoreEntitySet="PaymentHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="IdAccountLevel" ColumnName="IdAccountLevel" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NetVideoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoGenres">
+            <EntityTypeMapping TypeName="NetVideoModel.VideoGenre">
+              <MappingFragment StoreEntitySet="VideoGenre">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoInfoes">
+            <EntityTypeMapping TypeName="NetVideoModel.VideoInfo">
+              <MappingFragment StoreEntitySet="VideoInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ImageDetail" ColumnName="ImageDetail" />
+                <ScalarProperty Name="VideoDescription" ColumnName="VideoDescription" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="HotLevel" ColumnName="HotLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatchHistories">
+            <EntityTypeMapping TypeName="NetVideoModel.WatchHistory">
+              <MappingFragment StoreEntitySet="WatchHistory">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="IdVideo" ColumnName="IdVideo" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MyList" TypeName="NetVideoModel.MyList" StoreEntitySet="MyList">
+            <EndProperty Name="Account">
+              <ScalarProperty Name="Id" ColumnName="IdAccount" />
+            </EndProperty>
+            <EndProperty Name="VideoInfo">
+              <ScalarProperty Name="Id" ColumnName="IdVideo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="VI_VG" TypeName="NetVideoModel.VI_VG" StoreEntitySet="VI_VG">
+            <EndProperty Name="VideoGenre">
+              <ScalarProperty Name="Id" ColumnName="IdGenre" />
+            </EndProperty>
+            <EndProperty Name="VideoInfo">
+              <ScalarProperty Name="Id" ColumnName="IdVideo" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

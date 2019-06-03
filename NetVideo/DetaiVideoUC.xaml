@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetVideo"
+             xmlns:converter="clr-namespace:NetVideo.MyConverter"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:model="clr-namespace:NetVideo.Model"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -14,10 +15,15 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="300" d:DesignWidth="900">
+    <UserControl.Resources>
+        <local:VideoInfo x:Key="videoInfo"></local:VideoInfo>
+        <converter:GenresConverter x:Key="genresConverter"></converter:GenresConverter>
+        <converter:ImageConverter x:Key="imageConverter"></converter:ImageConverter>
+    </UserControl.Resources>
     <Grid>
-        <Image Source="bg_1200x400.jpg"></Image>
+        <Image Source="{Binding ImageDetail, Converter={StaticResource imageConverter}}"></Image>
         <StackPanel Margin="10" VerticalAlignment="Center">
-            <TextBlock FontSize="24">FILM NAME</TextBlock>
+            <TextBlock FontSize="24" Text="{Binding Name}"></TextBlock>
             <TextBlock HorizontalAlignment="Left"
                        Width="500"
                        Margin="5"
@@ -26,7 +32,10 @@
                        FontSize="12" 
                        LineStackingStrategy="BlockLineHeight"
                        LineHeight="16"
-                       MaxHeight="48">Titanic is a 1997 American epic romantic disaster movie. It was directed, written, and co-produced by James Cameron. The movie is about the 1912 sinking of the RMS Titanic. It stars Kate Winslet and Leonardo DiCaprio. The two play characters who are of different social classes.</TextBlock>
+                       MaxHeight="48"
+                       Text="{Binding VideoDescription}">
+                
+            </TextBlock>
             <StackPanel Margin="5" Orientation="Horizontal">
                 <Button Background="Red" Width="110">
                     <StackPanel Orientation="Horizontal">
@@ -36,38 +45,35 @@
                 </Button>
                 <Button Margin="10, 0" Background="{x:Null}" Width="110">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Play" />
+                        <materialDesign:PackIcon Kind="Add"/>
                         <TextBlock Margin="3, 0">MY LIST</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <TextBlock Text="Derector: Derector">
-                    <!--<TextBlock.Text>
-                        <MultiBinding StringFormat="Derector: {0}">
-                            <Binding Source="" Path=""></Binding>
-                        </MultiBinding>
-                    </TextBlock.Text>-->
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Director: {0}">
+                        <Binding Path="Director"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
             </TextBlock>
-            <TextBlock Text="Origin: Origin">
-                    <!--<TextBlock.Text>
-                        <MultiBinding StringFormat="Derector: {0}">
-                            <Binding Source="" Path=""></Binding>
-                        </MultiBinding>
-                    </TextBlock.Text>-->
+            <TextBlock >
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Origin: {0}">
+                        <Binding Path="Origin"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
             </TextBlock>
-            <TextBlock Text="Genres: Genre, Genre, Genre, Genre">
-                    <!--<TextBlock.Text>
-                        <MultiBinding StringFormat="Derector: {0}">
-                            <Binding Source="" Path=""></Binding>
-                        </MultiBinding>
-                    </TextBlock.Text>-->
-            </TextBlock>
-            <TextBlock Text="Actors: Actor, Actor, Actor, Actor">
-                    <!--<TextBlock.Text>
-                        <MultiBinding StringFormat="Derector: {0}">
-                            <Binding Source="" Path=""></Binding>
-                        </MultiBinding>
-                    </TextBlock.Text>-->
+            <StackPanel Name="tbGenres" Orientation="Horizontal">
+                <TextBlock Text="Genres: "></TextBlock>
+                <TextBlock Text="{Binding ListGenre, Converter={StaticResource genresConverter}}"></TextBlock>
+            </StackPanel>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Actors: {0}">
+                        <Binding Path="Actor"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
             </TextBlock>
         </StackPanel>
     </Grid>

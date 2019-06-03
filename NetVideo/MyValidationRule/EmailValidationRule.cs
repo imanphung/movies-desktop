@@ -19,6 +19,14 @@ namespace NetVideo.MyValidationRule
             {
                 vr = new ValidationResult(false, "Please enter a valid email.");
             }
+
+            NetVideoEntities db = new NetVideoEntities();
+            var accCount = db.Accounts.Where(x => x.Email == value).Count();
+            if (accCount > 0)
+            {
+                vr = new ValidationResult(false, "Email address already in use.");
+            }
+
             return vr;
         }
     }

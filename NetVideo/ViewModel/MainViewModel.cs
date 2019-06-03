@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace NetVideo.ViewModel
 {
-    class MainViewModel:BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
-
+        public MainViewModel()
+        {
+                
+        }
     }
 }

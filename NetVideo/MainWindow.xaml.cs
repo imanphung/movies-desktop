@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NetVideo.ViewModel;
 
 namespace NetVideo
 {
@@ -23,8 +24,28 @@ namespace NetVideo
         public MainWindow()
         {
             InitializeComponent();
+            ListVideoViewModel lvMyList = new ListVideoViewModel();
+            lvMyList.TitleList = "My list";
+            listMyList.DataContext = lvMyList;
+
+            ListVideoViewModel lvTrending = new ListVideoViewModel();
+            lvTrending.TitleList = "Trending now";
+            lvTrending.List = new System.Collections.ObjectModel.ObservableCollection<VideoInfo>(lvTrending.List.Where(p => p.HotLevel == 2).ToList());
+            listTrending.DataContext = lvTrending;
         }
 
-        
+        public MainWindow(int id)
+        {
+            InitializeComponent();
+
+            ListVideoViewModel lvMyList = new ListVideoViewModel();
+            lvMyList.TitleList = "My list";
+            listMyList.DataContext = lvMyList;
+
+            ListVideoViewModel lvTrending = new ListVideoViewModel();
+            lvTrending.TitleList = "Trending now";
+            lvTrending.List = new System.Collections.ObjectModel.ObservableCollection<VideoInfo>(lvTrending.List.Where(p => p.HotLevel == 2).ToList());
+            listTrending.DataContext = lvTrending;
+        }
     }
 }

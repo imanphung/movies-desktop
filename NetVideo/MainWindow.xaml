@@ -23,8 +23,8 @@
             <StackPanel Background="#FF0F0F14">
                 <local:DetaiVideoUC></local:DetaiVideoUC>
                 
-                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
-                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
+                <local:ListVideoUC x:Name="listMyList" Background="{x:Null}"></local:ListVideoUC>
+                <local:ListVideoUC x:Name="listTrending" Background="{x:Null}"></local:ListVideoUC>
                 <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
                 <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
 

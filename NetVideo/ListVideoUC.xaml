@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetVideo"
+             xmlns:converter="clr-namespace:NetVideo.MyConverter"
              mc:Ignorable="d" 
              Margin="20"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:model="clr-namespace:NetVideo.Model"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -17,14 +17,15 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="200" d:DesignWidth="400">
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type model:VideoInfo}">
+        <converter:ImageConverter x:Key="imageConverter"></converter:ImageConverter>
+        <DataTemplate DataType="{x:Type local:VideoInfo}">
             <StackPanel PreviewMouseLeftButtonUp="StackPanel_PreviewMouseLeftButtonUp" Margin="3, 0, 0, 5" Width="440" Height="225" Name="main" Background="Black">
                 <StackPanel.LayoutTransform>
                     <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
                 </StackPanel.LayoutTransform>
                 <Border Name="border" BorderBrush="Red" CornerRadius="2">
                     <StackPanel Name="stack" Tag="{Binding Id}" >
-                        <Image Stretch="Fill" Source="{Binding Image}"></Image>
+                        <Image Stretch="Fill" Source="{Binding Image, Converter={StaticResource imageConverter}}"></Image>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -35,7 +36,7 @@
                             <Storyboard>
                                 <DoubleAnimation Storyboard.TargetName="main"
                                                  Storyboard.TargetProperty="LayoutTransform.ScaleX"
-                                                 To="0.8" Duration="0:0:0.3"/>
+                                                 To="0.8" Duration="0:0:0:0.3"/>
                                 <DoubleAnimation Storyboard.TargetName="main"
                                                  Storyboard.TargetProperty="LayoutTransform.ScaleY"
                                                  To="0.8" Duration="0:0:0:0.3"/>
@@ -60,8 +61,8 @@
     </UserControl.Resources>
     <StackPanel>
         <Grid VerticalAlignment="Center">
-            <Label Foreground="WhiteSmoke" FontSize="15" >Trending now</Label>
-            <ItemsControl ItemsSource="{Binding}"
+            <Label Foreground="WhiteSmoke" FontSize="15" Content="{Binding TitleList}"></Label>
+            <ItemsControl ItemsSource="{Binding List}"
                           Name="items" VerticalAlignment="Center"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
                           ScrollViewer.VerticalScrollBarVisibility="Auto">

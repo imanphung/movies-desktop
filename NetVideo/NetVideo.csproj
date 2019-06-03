@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -42,7 +50,10 @@
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -81,8 +92,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Account.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountLevel.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerInfo.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
@@ -93,19 +113,49 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\CustomerInfo.cs" />
-    <Compile Include="Model\VideoInfo.cs" />
+    <Compile Include="MyConverter\GenresConverter.cs" />
     <Compile Include="MyConverter\ImageConverter.cs" />
     <Compile Include="MyValidationRule\EmailValidationRule.cs" />
     <Compile Include="MyValidationRule\PasswordValidationRule.cs" />
+    <Compile Include="NetVideoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetVideoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NetVideoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NetVideoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetVideoModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="PasswordBoxAssistant.cs" />
+    <Compile Include="PaymentHistory.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VideoGenre.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VideoInfo.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\ListVideoViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="WatchHistory.cs">
+      <DependentUpon>NetVideoModel.tt</DependentUpon>
+    </Compile>
     <Page Include="ControlBarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +211,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="NetVideoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NetVideoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NetVideoModel.edmx.diagram">
+      <DependentUpon>NetVideoModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,44 +225,59 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Styles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\1.jpg" />
-    <Resource Include="Images\10.jpg" />
-    <Resource Include="Images\11.jpg" />
-    <Resource Include="Images\12.jpg" />
-    <Resource Include="Images\2.jpg" />
-    <Resource Include="Images\3.jpg" />
-    <Resource Include="Images\4.jpg" />
-    <Resource Include="Images\5.png" />
-    <Resource Include="Images\6.jpg" />
-    <Resource Include="Images\7.jpg" />
-    <Resource Include="Images\8.jpg" />
-    <Resource Include="Images\9.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\lHFYy7f.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\13.jpg" />
-    <Resource Include="Images\14.jpg" />
-    <Resource Include="Images\15.jpg" />
-    <Resource Include="Images\16.jpg" />
-    <Resource Include="Images\17.jpg" />
-    <Resource Include="Images\18.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\background_login.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bg_1024x512.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="bg_1200x400.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1_1.jpg" />
+    <Resource Include="Images\1_2.jpg" />
+    <Resource Include="Images\2_1.jpg" />
+    <Resource Include="Images\2_2.jpg" />
+    <Resource Include="Images\3_1.jpg" />
+    <Resource Include="Images\3_2.jpg" />
+    <Resource Include="Images\4_1.jpg" />
+    <Resource Include="Images\4_2.jpg" />
+    <Resource Include="Images\5_1.jpg" />
+    <Resource Include="Images\5_2.jpg" />
+    <Resource Include="Images\6_1.jpg" />
+    <Resource Include="Images\6_2.jpg" />
+    <Resource Include="Images\7_1.jpg" />
+    <Resource Include="Images\7_2.jpg" />
+    <Resource Include="Images\8_1.jpg" />
+    <Resource Include="Images\8_2.jpg" />
+    <Resource Include="Images\9_1.jpg" />
+    <Resource Include="Images\9_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background_login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NetVideoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NetVideoModel.edmx</DependentUpon>
+      <LastGenOutput>NetVideoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NetVideoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NetVideoModel.edmx</DependentUpon>
+      <LastGenOutput>NetVideoModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

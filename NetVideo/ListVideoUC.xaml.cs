@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using NetVideo.Model;
+using NetVideo.ViewModel;
 
 namespace NetVideo
 {
@@ -24,70 +24,12 @@ namespace NetVideo
         public ListVideoUC()
         {
             InitializeComponent();
-            DataContext = new List<VideoInfo>
-            {
-                new VideoInfo { Image = "Images\\1.jpg", Id = "1"
-                },
-                new VideoInfo {Image = "Images\\2.jpg", Id = "2"
-                },
-                new VideoInfo {Image = "Images\\3.jpg", Id = "3"
-                },
-                new VideoInfo {Image = "Images\\4.jpg", Id = "4"
-                },
-                new VideoInfo {Image = "bg_1024x512.jpg", Id = "5"
-                },
-                new VideoInfo {Image = "Images\\6.jpg", Id = "6"
-                },
-                new VideoInfo {Image = "Images\\7.jpg", Id = "7"
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-                new VideoInfo {
-                },
-            };
         }
 
         string oldTag = null;
         private void StackPanel_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            NetVideoEntities db = new NetVideoEntities();
             StackPanel s = sender as StackPanel;
             StackPanel stack = (StackPanel)s.FindName("stack");
             if (oldTag != null)
@@ -99,9 +41,21 @@ namespace NetVideo
                     return;
                 }
             }
-            //detail.DataContext = stack.Tag.ToString();
+            int id = int.Parse(stack.Tag.ToString());
+            VideoInfo videoInfo = db.VideoInfoes.Where(x => x.Id == id).FirstOrDefault();
+            detail.DataContext = videoInfo;
+            genres g = new genres();
+            g.ListGenre = videoInfo.VideoGenres.ToList();
+            StackPanel tb = (StackPanel)detail.FindName("tbGenres");
+            tb.DataContext = g;
             detail.Visibility = System.Windows.Visibility.Visible;
             oldTag = stack.Tag.ToString();
         }
+    }
+
+    public class genres : BaseViewModel
+    {
+        private List<VideoGenre> _ListGenre;
+        public List<VideoGenre> ListGenre { get { return _ListGenre; } set { _ListGenre = value; OnPropertyChanged("ListGenre"); } }
     }
 }

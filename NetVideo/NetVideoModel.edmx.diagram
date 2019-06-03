@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d66772117e7d4889b699ca92af91a43f" Name="Diagram1">
+        <EntityTypeShape EntityType="NetVideoModel.Account" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.AccountLevel" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.CustomerInfo" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.PaymentHistory" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.VideoGenre" Width="1.5" PointX="1" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.VideoInfo" Width="1.5" PointX="4.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetVideoModel.WatchHistory" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="NetVideoModel.FK__Account__LevelId__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.FK__CustomerI__Accou__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.FK__PaymentHi__IdAcc__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.FK__WatchHist__IdAcc__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.FK__PaymentHi__IdAcc__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.FK__WatchHist__IdVid__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.MyList" ManuallyRouted="false" />
+        <AssociationConnector Association="NetVideoModel.VI_VG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

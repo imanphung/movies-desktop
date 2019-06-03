@@ -13,10 +13,10 @@ namespace NetVideo.MyConverter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var fileName = (String)value;
-            var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
-            var fullPath = baseFolder + "Images\\" + fileName;
+            var currentFolder = System.IO.Directory.GetCurrentDirectory();
+            var baseFolder = System.IO.Directory.GetParent(System.IO.Directory.GetParent(currentFolder).FullName).FullName;
+            var fullPath = baseFolder + "\\Images\\" + fileName;
             return fullPath;
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
