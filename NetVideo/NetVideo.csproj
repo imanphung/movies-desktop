@@ -98,16 +98,16 @@
     <Compile Include="AccountLevel.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ControlBarUC.xaml.cs">
+    <Compile Include="MyUserControl\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerInfo.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetaiVideoUC.xaml.cs">
+    <Compile Include="MyUserControl\DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListVideoUC.xaml.cs">
+    <Compile Include="MyUserControl\ListVideoUC.xaml.cs">
       <DependentUpon>ListVideoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
@@ -162,15 +162,15 @@
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Page Include="ControlBarUC.xaml">
+    <Page Include="MyUserControl\ControlBarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DetaiVideoUC.xaml">
+    <Page Include="MyUserControl\DetaiVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListVideoUC.xaml">
+    <Page Include="MyUserControl\ListVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

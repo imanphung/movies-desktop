@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:NetVideo.MyUserControl"
         xmlns:local="clr-namespace:NetVideo"
         mc:Ignorable="d"
          xmlns:viewmodel="clr-namespace:NetVideo.ViewModel"
@@ -18,16 +19,15 @@
     WindowStyle="None" ResizeMode="NoResize"  
     WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <DockPanel LastChildFill="True">
-        <local:ControlBarUC DockPanel.Dock="Top"></local:ControlBarUC>
+        <uc:ControlBarUC DockPanel.Dock="Top"></uc:ControlBarUC>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Background="#FF0F0F14">
-                <local:DetaiVideoUC x:Name="videoHot"></local:DetaiVideoUC>
-                
-                <local:ListVideoUC x:Name="listMyList" Background="{x:Null}"></local:ListVideoUC>
-                <local:ListVideoUC x:Name="listTrending" Background="{x:Null}"></local:ListVideoUC>
-                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
-                <local:ListVideoUC Background="{x:Null}"></local:ListVideoUC>
+                <uc:DetaiVideoUC x:Name="videoHot"></uc:DetaiVideoUC>
 
+                <uc:ListVideoUC x:Name="listMyList" Background="{x:Null}"></uc:ListVideoUC>
+                <uc:ListVideoUC x:Name="listTrending" Background="{x:Null}"></uc:ListVideoUC>
+                <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
+                <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

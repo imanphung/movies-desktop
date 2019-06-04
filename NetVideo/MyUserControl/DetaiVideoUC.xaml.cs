@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using NetVideo.ViewModel;
 
-namespace NetVideo
+namespace NetVideo.MyUserControl
 {
     /// <summary>
-    /// Interaction logic for ControlBarUC.xaml
+    /// Interaction logic for DetaiVideoUC.xaml
     /// </summary>
-    public partial class ControlBarUC : UserControl
+    public partial class DetaiVideoUC : UserControl
     {
-        public ControlBarViewModel Viewmodel { get; set; }
-        public ControlBarUC()
+        public DetaiVideoUC()
         {
             InitializeComponent();
-            this.DataContext = Viewmodel = new ControlBarViewModel();
         }
     }
 }
