@@ -115,9 +115,12 @@
     </Compile>
     <Compile Include="MyConverter\GenresConverter.cs" />
     <Compile Include="MyConverter\ImageConverter.cs" />
+    <Compile Include="MyValidationRule\CardNumberValidationRule.cs" />
     <Compile Include="MyValidationRule\EmailValidationRule.cs" />
     <Compile Include="MyValidationRule\EmptyValidationRule.cs" />
+    <Compile Include="MyValidationRule\ExpirationDateValidationRule.cs" />
     <Compile Include="MyValidationRule\PasswordValidationRule.cs" />
+    <Compile Include="MyValidationRule\SecurityCodeValidationRule.cs" />
     <Compile Include="NetVideoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

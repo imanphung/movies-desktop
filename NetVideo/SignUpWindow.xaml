@@ -139,7 +139,7 @@ We hate paperwork, too." />
                         <TextBox.Text>
                             <Binding Path="CardNumber" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmptyValidationRule Name="Card Number"></rule:EmptyValidationRule>
+                                    <rule:CardNumberValidationRule></rule:CardNumberValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -150,7 +150,7 @@ We hate paperwork, too." />
                         <TextBox.Text>
                             <Binding Path="ExpirationDate" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmptyValidationRule Name="Expiration Month"></rule:EmptyValidationRule>
+                                    <rule:ExpirationDateValidationRule></rule:ExpirationDateValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -161,7 +161,7 @@ We hate paperwork, too." />
                         <TextBox.Text>
                             <Binding Path="SecurityCode" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <rule:EmptyValidationRule Name="Security Code (CVV)"></rule:EmptyValidationRule>
+                                    <rule:SecurityCodeValidationRule></rule:SecurityCodeValidationRule>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -181,9 +181,9 @@ We hate paperwork, too." />
                             <Setter Property="GroupName" Value="radioPlan"></Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <RadioButton Name="radBasic">Basic</RadioButton>
-                    <RadioButton Name="radStandard">Standard</RadioButton>
-                    <RadioButton Name="radPremium" IsChecked="True">Premium</RadioButton>
+                    <RadioButton Name="radBasic">Basic ($8.99/month, 1 screen you can watch on at the same time)</RadioButton>
+                    <RadioButton Name="radStandard">Standard ($12.99/month, 2 screens you can watch on at the same time, HD available)</RadioButton>
+                    <RadioButton Name="radPremium" IsChecked="True">Premium ($15.99/month, 4 screens you can watch on at the same time, Ultra HD available)</RadioButton>
                 </StackPanel>
             </xctk:WizardPage>
         </xctk:Wizard>
