@@ -98,6 +98,7 @@
     <Compile Include="AccountLevel.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Admin_Analytics.xaml.cs">
       <DependentUpon>Admin_Analytics.xaml</DependentUpon>
     </Compile>
@@ -114,15 +115,18 @@
       <DependentUpon>Admin_Video.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlBarUC.xaml.cs">
+=======
+    <Compile Include="MyUserControl\ControlBarUC.xaml.cs">
+>>>>>>> f10950377c5324cbe55b1223000f52b95ce01121
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerInfo.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetaiVideoUC.xaml.cs">
+    <Compile Include="MyUserControl\DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListVideoUC.xaml.cs">
+    <Compile Include="MyUserControl\ListVideoUC.xaml.cs">
       <DependentUpon>ListVideoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
@@ -177,6 +181,7 @@
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Page Include="Admin_Analytics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,14 +203,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlBarUC.xaml">
+=======
+    <Page Include="MyUserControl\ControlBarUC.xaml">
+>>>>>>> f10950377c5324cbe55b1223000f52b95ce01121
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DetaiVideoUC.xaml">
+    <Page Include="MyUserControl\DetaiVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListVideoUC.xaml">
+    <Page Include="MyUserControl\ListVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

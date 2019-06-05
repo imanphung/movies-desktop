@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="NetVideo.ListVideoUC"
+﻿<UserControl x:Class="NetVideo.MyUserControl.ListVideoUC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetVideo"
+             xmlns:uc="clr-namespace:NetVideo.MyUserControl"
              xmlns:converter="clr-namespace:NetVideo.MyConverter"
              mc:Ignorable="d" 
              Margin="20"
@@ -108,6 +109,6 @@
                 </ItemsControl.Template>
             </ItemsControl>
         </Grid>
-        <local:DetaiVideoUC x:Name="detail" Visibility="Collapsed"></local:DetaiVideoUC>
+        <uc:DetaiVideoUC x:Name="detail" Visibility="Collapsed"></uc:DetaiVideoUC>
     </StackPanel>
 </UserControl>

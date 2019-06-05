@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NetVideo.ViewModel;
 
-namespace NetVideo
+namespace NetVideo.MyUserControl
 {
     /// <summary>
     /// Interaction logic for ControlBarUC.xaml
