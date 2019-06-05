@@ -17,9 +17,9 @@
     <Grid Height="56" DockPanel.Dock="Top">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
             <Image Width="100"></Image>
-            <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" />
-            <Button Uid="1" Width="100" Content="Videos" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke"/>
-            <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke"/>
+            <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click" />
+            <Button Uid="1" Width="100" Content="Videos" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
+            <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Foreground="WhiteSmoke"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425">
@@ -36,7 +36,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}" 
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
-                    RenderTransformOrigin="1.9,0.425">
+                    RenderTransformOrigin="1.9,0.425" Click="Button_Click">
                 <materialDesign:PackIcon Kind="Power" Foreground="OrangeRed" Width="25" Height="25" />
             </Button>
         </StackPanel>

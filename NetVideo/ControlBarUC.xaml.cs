@@ -27,5 +27,20 @@ namespace NetVideo
             InitializeComponent();
             this.DataContext = Viewmodel = new ControlBarViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            GridCursor.Margin = new Thickness(100 + (150 * index), 0, 0, 0);
+
+            switch (index)
+            {
+                case 4:
+                    //Close window
+                    break;
+            }
+        }
+
     }
 }

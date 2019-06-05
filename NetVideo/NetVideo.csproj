@@ -98,6 +98,21 @@
     <Compile Include="AccountLevel.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Analytics.xaml.cs">
+      <DependentUpon>Admin_Analytics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ControlBarUC.xaml.cs">
+      <DependentUpon>Admin_ControlBarUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_MainWindow.xaml.cs">
+      <DependentUpon>Admin_MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_User.xaml.cs">
+      <DependentUpon>Admin_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Video.xaml.cs">
+      <DependentUpon>Admin_Video.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
@@ -162,6 +177,26 @@
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+    <Page Include="Admin_Analytics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_ControlBarUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Video.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlBarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
