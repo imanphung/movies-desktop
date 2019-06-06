@@ -14,29 +14,84 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Height="56" DockPanel.Dock="Top">
+    <Grid Height="56">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
             <Image Width="100"></Image>
-            <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click" />
-            <Button Uid="1" Width="100" Content="Videos" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
-            <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" Click="Button_Click"/>
+            <Button Uid="0" Width="100" Content="Home" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke" />
+            <Button Uid="1" Width="100" Content="Genres" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke"/>
+            <Button Uid="2" Width="100" Content="My List" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="WhiteSmoke"/>
+            <materialDesign:ColorZone
+        Mode="Light"
+                VerticalAlignment="Center"
+        Padding="8 4 8 4"
+        CornerRadius="2"
+        Panel.ZIndex="1"
+        Margin="16 0 0 0"
+        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+              Width="Auto" />
+                        <ColumnDefinition
+              Width="*" />
+                        <ColumnDefinition
+              Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        Name="keyword"
+            Grid.Column="1"
+            Margin="8 0 0 0"
+            materialDesign:HintAssist.Hint="Search"
+            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            BorderThickness="0"
+            MinWidth="300"
+                        MaxWidth="300"
+            VerticalAlignment="Center" />
+                    <Button
+            Style="{DynamicResource MaterialDesignToolButton}"
+            Grid.Column="2">
+                        <materialDesign:PackIcon
+              Kind="Magnify"
+              Opacity=".56"
+              Margin="8 0 0 0" />
+                    </Button>
+                </Grid>
+            </materialDesign:ColorZone>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Foreground="WhiteSmoke"  Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" RenderTransformOrigin="1.9,0.425">
                 <materialDesign:PackIcon Kind="BellRingOutline" Width="25" Height="25"  />
             </Button>
-            <ComboBox Margin="15,0,15,0" FontSize="15" Width="100" Foreground="WhiteSmoke" SelectedIndex="0" VerticalAlignment="Center">
-                <ComboBoxItem Content="Name"/>
-                <ComboBoxItem Content="Info"/>
-                <ComboBoxItem Content="My List"/>
-                <ComboBoxItem Content="History"/>
-            </ComboBox>
+            <Menu IsMainMenu="True">
+                <MenuItem
+                    Header="Cus Name">
+                    <MenuItem
+                        Header="Infomation">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Account" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Header="History">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ChangeHistory" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator></Separator>
+                    <MenuItem
+                        Header="Logout">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Logout" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
             <Button Uid="4" Command="{Binding CloseCommand}"
                     CommandParameter="{Binding ElementName=controlBar}"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}" 
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
-                    RenderTransformOrigin="1.9,0.425" Click="Button_Click">
+                    RenderTransformOrigin="1.9,0.425">
                 <materialDesign:PackIcon Kind="Power" Foreground="OrangeRed" Width="25" Height="25" />
             </Button>
         </StackPanel>

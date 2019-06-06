@@ -98,7 +98,6 @@
     <Compile Include="AccountLevel.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Admin_Analytics.xaml.cs">
       <DependentUpon>Admin_Analytics.xaml</DependentUpon>
     </Compile>
@@ -114,10 +113,7 @@
     <Compile Include="Admin_Video.xaml.cs">
       <DependentUpon>Admin_Video.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlBarUC.xaml.cs">
-=======
     <Compile Include="MyUserControl\ControlBarUC.xaml.cs">
->>>>>>> f10950377c5324cbe55b1223000f52b95ce01121
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerInfo.cs">
@@ -125,6 +121,9 @@
     </Compile>
     <Compile Include="MyUserControl\DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControl\ListVideo2UC.xaml.cs">
+      <DependentUpon>ListVideo2UC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyUserControl\ListVideoUC.xaml.cs">
       <DependentUpon>ListVideoUC.xaml</DependentUpon>
@@ -174,6 +173,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\DetailVideoViewModel.cs" />
+    <Compile Include="ViewModel\ListVideo2ViewModel.cs" />
     <Compile Include="ViewModel\ListVideoViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -181,7 +181,6 @@
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Page Include="Admin_Analytics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,14 +201,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlBarUC.xaml">
-=======
     <Page Include="MyUserControl\ControlBarUC.xaml">
->>>>>>> f10950377c5324cbe55b1223000f52b95ce01121
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MyUserControl\DetaiVideoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyUserControl\ListVideo2UC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

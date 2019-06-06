@@ -2,11 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:NetVideo"
-<<<<<<< HEAD
-             StartupUri="Admin_Video.xaml">
-=======
              StartupUri="MainWindow.xaml">
->>>>>>> f10950377c5324cbe55b1223000f52b95ce01121
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

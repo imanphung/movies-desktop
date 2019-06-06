@@ -20,7 +20,7 @@
     WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <DockPanel LastChildFill="True">
         <uc:ControlBarUC DockPanel.Dock="Top"></uc:ControlBarUC>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Visibility="Collapsed">
             <StackPanel Background="#FF0F0F14">
                 <uc:DetaiVideoUC x:Name="videoHot"></uc:DetaiVideoUC>
 
@@ -30,5 +30,6 @@
                 <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
             </StackPanel>
         </ScrollViewer>
+        <uc:ListVideo2UC x:Name="list2"></uc:ListVideo2UC>
     </DockPanel>
 </Window>

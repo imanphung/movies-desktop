@@ -11,11 +11,11 @@ namespace NetVideo.MyConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            List<VideoGenre> list = (List<VideoGenre>)value;
+            ICollection<VideoGenre> list = (ICollection<VideoGenre>)value;
             List<string> listName = new List<string>();
             for (int i = 0; i < list.Count; i++)
             {
-                listName.Add(list[i].Name);
+                listName.Add(list.ElementAt(i).Name);
             }
             return String.Join(", ", listName.ToArray());
         }

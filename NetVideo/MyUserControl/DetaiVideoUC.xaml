@@ -21,7 +21,7 @@
         <converter:ImageConverter x:Key="imageConverter"></converter:ImageConverter>
     </UserControl.Resources>
     <Grid>
-        <Image Source="{Binding ImageDetail, Converter={StaticResource imageConverter}}"></Image>
+        <Image Source="{Binding Image, Converter={StaticResource imageConverter}}"></Image>
         <StackPanel Margin="10" VerticalAlignment="Center">
             <TextBlock FontSize="24" Text="{Binding Name}"></TextBlock>
             <TextBlock HorizontalAlignment="Left"
@@ -66,7 +66,7 @@
             </TextBlock>
             <StackPanel Name="tbGenres" Orientation="Horizontal">
                 <TextBlock Text="Genres: "></TextBlock>
-                <TextBlock Text="{Binding ListGenre, Converter={StaticResource genresConverter}}"></TextBlock>
+                <TextBlock Text="{Binding VideoGenres, Converter={StaticResource genresConverter}}"></TextBlock>
             </StackPanel>
             <TextBlock>
                 <TextBlock.Text>

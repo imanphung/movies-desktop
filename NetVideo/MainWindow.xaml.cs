@@ -42,6 +42,9 @@ namespace NetVideo
             VideoInfo v = db.VideoInfoes.Where(x => x.HotLevel == minValue).FirstOrDefault();
             DetailVideoViewModel d = new DetailVideoViewModel();
             d.BindingDetail(v.Id, videoHot);
+
+            ListVideo2ViewModel lv2 = new ListVideo2ViewModel();
+            list2.DataContext = lv2;
         }
 
         public MainWindow(int id)
