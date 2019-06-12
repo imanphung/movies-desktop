@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetVideo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
-        mc:Ignorable="d" Height="300" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        mc:Ignorable="d" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -20,7 +20,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <materialDesign:Card Grid.Row="0" Margin="5"  Background="White" BorderBrush="Black">
+            <materialDesign:Card Grid.Row="0" Margin="5,0"  Background="White" BorderBrush="Black" Height="52">
                 <WrapPanel>
                     <TextBox Text="{Binding Levelld}" Margin="5,5,15,5" materialDesign:HintAssist.Hint="Level" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                     <TextBox Text="{Binding ActivationDate}" Margin="5,5,15,5" materialDesign:HintAssist.Hint="Activation Date" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
@@ -43,7 +43,7 @@
                             <GridViewColumn Header="Levelld"></GridViewColumn>
                             <GridViewColumn Header="Activation Date"></GridViewColumn>
                             <GridViewColumn Header="Expiration Date"></GridViewColumn>
-                         
+
                             <GridViewColumn></GridViewColumn>
                         </GridView>
                     </ListView.View>

@@ -36,6 +36,8 @@
                     <Button Command="{Binding AddCommand}" Background="#FF2DA8A8" Margin="5" Content="New Add"></Button>
                     <Button Command="{Binding DeleteCommand}" Margin="5" Content="Delete" Background="#FFE67676"></Button>
                     <Button Command="{Binding EditCommand}"  Margin="5" Content="Edit" Background="#FF919191"></Button>
+                    <Button Command="{Binding EditCommand}"  Margin="5" Content="Import" Background="#FFFB8D4F"></Button>
+                    <Button Command="{Binding EditCommand}"  Margin="5" Content="IMDB Update " Background="#FF69CDA4"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">

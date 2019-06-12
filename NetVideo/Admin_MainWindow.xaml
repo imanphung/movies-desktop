@@ -130,7 +130,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="GridMenu" Grid.Column="0" Height="570" HorizontalAlignment="Left" Background="#FF31577E">
+            <Grid x:Name="GridMenu" Grid.Column="0" Height="570" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
                 <!--<Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="LightGray" Offset="1"/>
@@ -146,10 +146,10 @@
                 </Grid.Effect>
 
                 <Grid Background="#FF31577E">
-                    <Button x:Name="ButtonOpenMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonOpenMenu_Click">
+                    <Button x:Name="ButtonOpenMenu"  Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
-                    <Button x:Name="ButtonCloseMenu"  Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonCloseMenu_Click">
+                    <Button x:Name="ButtonCloseMenu"  Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
                 </Grid>
@@ -184,7 +184,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Grid x:Name="GridMain" HorizontalAlignment="Right"  Grid.Column="1" Background="#FFCFCFCF" Width="824">
+            <Grid x:Name="GridMain" HorizontalAlignment="Right"  Grid.Column="1" Background="#FFCFCFCF" Width="954">
                 <ScrollViewer>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -199,22 +199,23 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
+                            
                             <Rectangle Height="120" Margin="20" Fill="White" RadiusY="10" RadiusX="10" >
                                 <Rectangle.Effect>
                                     <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
                                 </Rectangle.Effect>
                             </Rectangle>
                             <Grid Margin="25" Height="120">
-                                <Grid Width="35" Height="50" Background="#FFFFAF24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
+                                <Grid Width="35" Height="50" Background="#FF535353" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
                                     <Grid.Effect>
                                         <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1"/>
                                     </Grid.Effect>
-                                    <materialDesign:PackIcon Kind="ContentCopy" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
+                                    <materialDesign:PackIcon Kind="Video" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
                                 </Grid>
-                                <TextBlock Text="Espaço Usado" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="5" VerticalAlignment="Top" Foreground="Gray"/>
+                                <TextBlock FontSize="15" Text="Video" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="5" VerticalAlignment="Top" Foreground="Gray"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 20">
-                                    <TextBlock Text="49/50" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="50"/>
-                                    <TextBlock Text="GB" FontFamily="Champagne &amp; Limousines" Margin="0 5" Foreground="Gray" FontSize="20" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="1000" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="50"/>
+                                    <TextBlock Text="     " FontFamily="Champagne &amp; Limousines" Margin="0 5" Foreground="Gray" FontSize="20" VerticalAlignment="Bottom"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="20" Cursor="Hand">
                                     <materialDesign:PackIcon Kind="AlertOutline" Foreground="Red" Width="10" Height="10" VerticalAlignment="Center" Margin="5 0"/>
@@ -229,16 +230,16 @@
                                 </Rectangle.Effect>
                             </Rectangle>
                             <Grid Margin="25" Height="120">
-                                <Grid Width="35" Height="50" Background="#FF41A43C" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
+                                <Grid Width="35" Height="50" Background="#FFFD9C28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 0">
                                     <Grid.Effect>
                                         <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1"/>
                                     </Grid.Effect>
-                                    <materialDesign:PackIcon Kind="Store" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
+                                    <materialDesign:PackIcon Kind="User" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
                                 </Grid>
-                                <TextBlock Text="Receita" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="5" VerticalAlignment="Top" Foreground="Gray"/>
+                                <TextBlock Text="User" FontSize="15" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="5" VerticalAlignment="Top" Foreground="Gray"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30">
-                                    <TextBlock Text="R$" FontFamily="Champagne &amp; Limousines" Margin="0 2" Foreground="Gray" FontSize="20" VerticalAlignment="Bottom"/>
-                                    <TextBlock Text="35.674,00" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="30"/>
+                                    <TextBlock Text="50000" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="50" Height="78"/>
+
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="20">
                                     <materialDesign:PackIcon Kind="Calendar" Foreground="Gray" Width="10" Height="10" VerticalAlignment="Center" Margin="5 0"/>
@@ -260,9 +261,7 @@
                                     <materialDesign:PackIcon Kind="InformationOutline" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="20" Height="20"/>
                                 </Grid>
                                 <TextBlock Text="Erros Corrigidos" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="5" VerticalAlignment="Top" Foreground="Gray"/>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30">
-                                    <TextBlock Text="75" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="40"/>
-                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 30"/>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="20">
                                     <materialDesign:PackIcon Kind="GithubCircle" Foreground="Gray" Width="10" Height="10" VerticalAlignment="Center" Margin="5 0"/>
                                     <TextBlock Text="Monitorado pelo GitHub" FontSize="8" Foreground="Gray"/>
@@ -270,22 +269,26 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" Width="580" Height="510">
+                        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" Width="650" Height="370">
                             <Grid Background="White" Margin="20 50 20 20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="39*"/>
+                                    <RowDefinition Height="71*"/>
+                                </Grid.RowDefinitions>
                                 <Grid.OpacityMask>
                                     <VisualBrush Visual="{ Binding ElementName=BorderG1 }"/>
                                 </Grid.OpacityMask>
-                                <Border x:Name="BorderG1" CornerRadius="5" Background="White"/>
-                                <StackPanel VerticalAlignment="Bottom" >
-                                    <TextBlock Text="Receita Diária" Margin="10 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="20"/>
+                                <Border x:Name="BorderG1" CornerRadius="5" Background="White" Margin="0,-5,0,118" Grid.RowSpan="2"/>
+                                <StackPanel VerticalAlignment="Bottom" Grid.Row="1" >
+                                    <TextBlock Text="Analytics" Margin="10 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="20"/>
                                     <StackPanel Orientation="Horizontal" Margin="20 5">
                                         <materialDesign:PackIcon Kind="ArrowUp" Foreground="Green" VerticalAlignment="Center"/>
                                         <TextBlock Text="55%" FontFamily="Champagne &amp; Limousines" Foreground="Green" FontSize="15"/>
-                                        <TextBlock Text="Crescimento nas vendas hoje" Margin="20 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="15"/>
+                                        <TextBlock Text="Increase" Margin="20 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="15"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10 5">
                                         <materialDesign:PackIcon Kind="Clock" Foreground="Gray" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Atualizado a 4 minutos" Margin="5 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="15"/>
+                                        <TextBlock Text="12/6/2019" Margin="5 0" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="15"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -293,7 +296,6 @@
                                 <Grid.OpacityMask>
                                     <VisualBrush Visual="{ Binding ElementName=BorderG2 }"/>
                                 </Grid.OpacityMask>
-                                <Border x:Name="BorderG2" CornerRadius="15" Background="#FF37B486"/>
                             </Grid>
                         </Grid>
                     </Grid>
