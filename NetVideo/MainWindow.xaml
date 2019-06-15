@@ -19,17 +19,26 @@
     WindowStyle="None" ResizeMode="NoResize"  
     WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <DockPanel LastChildFill="True">
-        <uc:ControlBarUC DockPanel.Dock="Top"></uc:ControlBarUC>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" Visibility="Collapsed">
-            <StackPanel Background="#FF0F0F14">
-                <uc:DetaiVideoUC x:Name="videoHot"></uc:DetaiVideoUC>
+        <uc:ControlBarUC x:Name="controlBarMain"  DockPanel.Dock="Top"></uc:ControlBarUC>
+        <Grid>
+            <ScrollViewer Name="scrollViewerMain" VerticalScrollBarVisibility="Hidden">
+                <StackPanel Background="#FF0F0F14">
+                    <uc:DetaiVideoUC x:Name="videoHot"></uc:DetaiVideoUC>
 
-                <uc:ListVideoUC x:Name="listMyList" Background="{x:Null}"></uc:ListVideoUC>
-                <uc:ListVideoUC x:Name="listTrending" Background="{x:Null}"></uc:ListVideoUC>
-                <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
-                <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
-            </StackPanel>
-        </ScrollViewer>
-        <uc:ListVideo2UC x:Name="list2"></uc:ListVideo2UC>
+                    <uc:ListVideoUC x:Name="listMyList" Background="{x:Null}"></uc:ListVideoUC>
+                    <uc:ListVideoUC x:Name="listTrending" Background="{x:Null}"></uc:ListVideoUC>
+                    <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
+                    <uc:ListVideoUC Background="{x:Null}"></uc:ListVideoUC>
+                </StackPanel>
+            </ScrollViewer>
+
+            <uc:ListVideo2UC x:Name="list2" Visibility="Collapsed"></uc:ListVideo2UC>
+
+            <uc:CustomerInfoUC x:Name="cusInfo" Visibility="Collapsed"></uc:CustomerInfoUC>
+
+            <uc:ChangePasswordUC x:Name="changePassword" Visibility="Collapsed"></uc:ChangePasswordUC>
+
+            <uc:HistoryPaymentUC x:Name="paymentHistory" Visibility="Collapsed"></uc:HistoryPaymentUC>
+        </Grid>
     </DockPanel>
 </Window>

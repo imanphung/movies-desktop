@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace NetVideo.MyValidationRule
 {
-    public class EmailValidationRule : ValidationRule
+    public class EmailLoginValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
@@ -19,14 +19,6 @@ namespace NetVideo.MyValidationRule
             {
                 vr = new ValidationResult(false, "Please enter a valid email.");
             }
-
-            NetVideoEntities db = new NetVideoEntities();
-            var accCount = db.Accounts.Where(x => x.Email == value.ToString()).Count();
-            if (accCount > 0)
-            {
-                vr = new ValidationResult(false, "Email address already in use.");
-            }
-
             return vr;
         }
     }

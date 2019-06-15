@@ -96,6 +96,13 @@ namespace NetVideo
             acc.ExpirationDate = DateTime.Now.Date.AddDays(30);
             db.Accounts.Add(acc);
 
+            PaymentHistory ph = new PaymentHistory();
+            ph.IdAccount = acc.Id;
+            ph.IdAccountLevel = acc.LevelId;
+            ph.ActivationDate = acc.ActivationDate;
+            ph.ExpirationDate = acc.ExpirationDate;
+            db.PaymentHistories.Add(ph);
+
             CustomerInfo cus = new CustomerInfo();
             cus.FirstName = txtFirstName.Text;
             cus.LastName = txtLastName.Text;
@@ -109,6 +116,8 @@ namespace NetVideo
             cus.CardExpirationDate = date;
             cus.SecurityCode = txtSecurityCode.Text;
             db.CustomerInfoes.Add(cus);
+
+
 
             db.SaveChanges();
             MessageBox.Show("Success!");

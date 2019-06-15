@@ -33,9 +33,6 @@ namespace NetVideo.ViewModel
 
         public ListVideo2ViewModel()
         {
-            NetVideoEntities db = new NetVideoEntities();
-            ListVideo = db.VideoInfoes.ToList();
-
             NextPageCommand = new RelayCommand<object>((p) => { return CurPage < TotalPage ? true : false; }, (p) => { CurPage++; ListVideoShow = new ObservableCollection<VideoInfo>(ListVideo.OrderBy(v => v.Id).Skip((CurPage - 1) * PageSize).Take(PageSize).ToList()); });
             PreviousPageCommand = new RelayCommand<object>((p) => { return CurPage > 1 ? true : false; }, (p) => { CurPage--; ListVideoShow = new ObservableCollection<VideoInfo>(ListVideo.OrderBy(v => v.Id).Skip((CurPage - 1) * PageSize).Take(PageSize).ToList()); });
             LastPageCommand = new RelayCommand<object>((p) => { return CurPage < TotalPage ? true : false; }, (p) => { CurPage = TotalPage; ListVideoShow = new ObservableCollection<VideoInfo>(ListVideo.OrderBy(v => v.Id).Skip((CurPage - 1) * PageSize).Take(PageSize).ToList()); });
@@ -44,8 +41,7 @@ namespace NetVideo.ViewModel
             PageSize = 3;
             CurPage = 1;
 
-            TotalPage = (int)Math.Ceiling(ListVideo.Count() * 1.0 / PageSize);
-            ListVideoShow = new ObservableCollection<VideoInfo>(ListVideo.OrderBy(p => p.Id).Skip((CurPage - 1) * PageSize).Take(PageSize).ToList());
+            
         }
     }
 }

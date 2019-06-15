@@ -10,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using NetVideo.ViewModel;
 
-namespace NetVideo
+namespace NetVideo.MyUserControl
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for ChangePasswordUC.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class ChangePasswordUC : UserControl
     {
-        public LoginWindow()
+        public ChangePasswordUC()
         {
             InitializeComponent();
-            txtEmail.Focus();
-            LoginViewModel lvm = new LoginViewModel();
-            DataContext = lvm;
         }
     }
 }

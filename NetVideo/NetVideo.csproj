@@ -122,14 +122,23 @@
     <Compile Include="Admin_Video.xaml.cs">
       <DependentUpon>Admin_Video.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyUserControl\ChangePasswordUC.xaml.cs">
+      <DependentUpon>ChangePasswordUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyUserControl\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerInfo.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyUserControl\CustomerInfoUC.xaml.cs">
+      <DependentUpon>CustomerInfoUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyUserControl\DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControl\HistoryPaymentUC.xaml.cs">
+      <DependentUpon>HistoryPaymentUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyUserControl\ListVideo2UC.xaml.cs">
       <DependentUpon>ListVideo2UC.xaml</DependentUpon>
@@ -143,6 +152,7 @@
     <Compile Include="MyConverter\GenresConverter.cs" />
     <Compile Include="MyConverter\ImageConverter.cs" />
     <Compile Include="MyValidationRule\CardNumberValidationRule.cs" />
+    <Compile Include="MyValidationRule\EmailLoginValidationRule.cs" />
     <Compile Include="MyValidationRule\EmailValidationRule.cs" />
     <Compile Include="MyValidationRule\EmptyValidationRule.cs" />
     <Compile Include="MyValidationRule\ExpirationDateValidationRule.cs" />
@@ -180,8 +190,11 @@
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\CusInfoViewModel.cs" />
     <Compile Include="ViewModel\DetailVideoViewModel.cs" />
+    <Compile Include="ViewModel\HistoryPaymentViewModel.cs" />
     <Compile Include="ViewModel\ListVideo2ViewModel.cs" />
     <Compile Include="ViewModel\ListVideoViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -210,11 +223,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyUserControl\ChangePasswordUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyUserControl\ControlBarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyUserControl\CustomerInfoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyUserControl\DetaiVideoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyUserControl\HistoryPaymentUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -323,6 +348,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="MyUserControl\background_login_2.jpg" />
     <Content Include="NetVideoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NetVideoModel.edmx</DependentUpon>

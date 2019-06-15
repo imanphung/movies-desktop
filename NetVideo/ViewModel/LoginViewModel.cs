@@ -11,16 +11,20 @@ namespace NetVideo.ViewModel
     public class LoginViewModel : BaseViewModel
     {
         public ICommand LoginCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
 
-        private String _Email;
-        public String Email { get { return _Email; } set { _Email = value; OnPropertyChanged("Email"); } }
+        private string _Email;
+        public string Email { get { return _Email; } set { _Email = value; OnPropertyChanged("Email"); } }
 
-        private String _Password;
-        public String Password { get { return _Password; } set { _Password = value; OnPropertyChanged("Password"); } }
+        private string _Password;
+        public string Password { get { return _Password; } set { _Password = value; OnPropertyChanged("Password"); } }
 
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
+            CloseCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+                System.Windows.Application.Current.Shutdown();
+            });
         }
 
         public void Login(Window p)
@@ -35,8 +39,11 @@ namespace NetVideo.ViewModel
             if (acc != null)
             {
                 MainWindow main = new MainWindow(acc.Id);
-                main.Show();
-                p.Close();
+                p.Hide();
+                main.ShowDialog();
+                if (Application.Current != null) { 
+                    p.Show();
+                }
             }
             else
             {

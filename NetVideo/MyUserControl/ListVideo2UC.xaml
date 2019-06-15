@@ -86,7 +86,7 @@
 
     <DockPanel LastChildFill="True">
         <StackPanel HorizontalAlignment="Center"
-                    Height="56"
+                    Height="70"
                     DockPanel.Dock="Bottom"
                     Orientation="Horizontal" 
                     VerticalAlignment="Top">
