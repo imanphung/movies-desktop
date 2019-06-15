@@ -26,7 +26,6 @@ namespace NetVideo.ViewModel
                 System.Windows.Application.Current.Shutdown();
             });
         }
-
         public void Login(Window p)
         {
             NetVideoEntities db = new NetVideoEntities();

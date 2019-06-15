@@ -107,20 +107,17 @@
     <Compile Include="AccountLevel.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Analytics.xaml.cs">
-      <DependentUpon>Admin_Analytics.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_ControlBarUC.xaml.cs">
-      <DependentUpon>Admin_ControlBarUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Admin_MainWindow.xaml.cs">
       <DependentUpon>Admin_MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_User.xaml.cs">
-      <DependentUpon>Admin_User.xaml</DependentUpon>
+    <Compile Include="MyUserControl\AdminAnalyticUC.xaml.cs">
+      <DependentUpon>AdminAnalyticUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Video.xaml.cs">
-      <DependentUpon>Admin_Video.xaml</DependentUpon>
+    <Compile Include="MyUserControl\AdminUserUC.xaml.cs">
+      <DependentUpon>AdminUserUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControl\AdminVideoUC.xaml.cs">
+      <DependentUpon>AdminVideoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyUserControl\ChangePasswordUC.xaml.cs">
       <DependentUpon>ChangePasswordUC.xaml</DependentUpon>
@@ -133,6 +130,9 @@
     </Compile>
     <Compile Include="MyUserControl\CustomerInfoUC.xaml.cs">
       <DependentUpon>CustomerInfoUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControl\DashboardUC.xaml.cs">
+      <DependentUpon>DashboardUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyUserControl\DetaiVideoUC.xaml.cs">
       <DependentUpon>DetaiVideoUC.xaml</DependentUpon>
@@ -189,6 +189,7 @@
     <Compile Include="VideoInfo.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AdminMainWindowViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
@@ -203,23 +204,19 @@
     <Compile Include="WatchHistory.cs">
       <DependentUpon>NetVideoModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Admin_Analytics.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Admin_ControlBarUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Admin_MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_User.xaml">
+    <Page Include="MyUserControl\AdminAnalyticUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Video.xaml">
+    <Page Include="MyUserControl\AdminUserUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyUserControl\AdminVideoUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MyUserControl\CustomerInfoUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyUserControl\DashboardUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
